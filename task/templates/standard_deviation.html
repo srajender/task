@@ -1,0 +1,23 @@
+{%include "home_page.html"%}<hr>
+
+<h3 align='center'>Here yellow color rows are above std dev amount</h3>
+<h3 align="center">Standard Deviation:{{std_dev}}</h3>
+
+<table align='center' border='1'><tr><th style='color:red'>Account No</th><th style='color:red'>Transaction Date</th><th style='color:red'>Debit/Credit</th><th style='color:red'>Amount</th>
+ {% for prod in form %}
+ <tr>
+ 
+ 	{% if prod.amount in list %}
+ 		<td bgcolor="yellow"><strong>{{ prod.customer.account_number }}</strong></td>
+ 		<td bgcolor="yellow"><strong>{{ prod.transaction_date }}</strong></td>
+ 		<td bgcolor="yellow"><strong>{{ prod.transaction_type }}</strong></td>
+		<td bgcolor="yellow"><strong>{{prod.amount}}</strong></td>
+	{%else%}
+		<td>{{ prod.customer.account_number }}</td>
+ 		<td>{{ prod.transaction_date }}</td>
+ 		<td>{{ prod.transaction_type }}</td>
+		<td>{{prod.amount}}</td>
+	{% endif %}
+ </tr>
+ {% endfor %}
+ </table>
